@@ -1,0 +1,10 @@
+variant,description,n_archetypes,R2_gap_vs_inverse_groundwater,pearson_r,pearson_p,mean_gap,gap_deltaic,gap_coastal,gap_lowland,gap_mixed,gap_inland,gap_arid,gap_cold,gap_high_alt
+baseline,as-built synthetic dependency graph,8,0.62587,0.79112,0.019363,0.010965,0.026371,0.017617,0.007691,-0.002546,0.010115,-0.001764,0.010292,0.019947
+no_dependency_all,remove all dependency edges,8,0.48339,0.69527,0.055563,0.007072,0.016074,0.007226,0.006369,-0.001361,0.007284,-0.000921,0.007958,0.013949
+no_lifeline_backbone,remove non-building to non-building same-class backbone edges,8,0.64349,0.80218,0.016596,0.010025,0.023522,0.016563,0.007658,-0.002168,0.009121,-0.000458,0.00853,0.017427
+no_feeder_to_building,remove all lifeline feeder-to-building edges,8,0.47287,0.68766,0.059448,0.007762,0.018409,0.007655,0.006313,-0.001451,0.008257,-0.002274,0.009064,0.016124
+remove_water_feeders,remove water-to-building feeder edges,8,0.66438,0.8151,0.013694,0.008641,0.025391,0.010602,0.006649,-0.003367,0.007623,-0.003978,0.01081,0.015397
+remove_power_feeders,remove power-to-building feeder edges,8,0.51448,0.71727,0.045196,0.010653,0.023319,0.017237,0.007437,-0.003009,0.010604,-0.000764,0.008915,0.021483
+remove_transport_feeders,remove transport-to-building feeder edges,8,0.59006,0.76816,0.025989,0.010567,0.023246,0.015602,0.007618,-0.000226,0.010187,-0.001089,0.010047,0.019149
+halve_all_edges,halve all dependency weights,8,0.59258,0.76979,0.025476,0.009128,0.021482,0.012878,0.007135,-0.001878,0.008639,-0.001273,0.008989,0.017052
+double_all_edges,"double all dependency weights, clipped at 1",8,0.60252,0.77622,0.023525,0.013445,0.033184,0.023333,0.008123,-0.004694,0.013498,-0.00378,0.013242,0.024654

@@ -1,0 +1,4 @@
+model,validation_split,n_pairs,rmse_mean,rmse_std,loco_wins_vs_other,mae_status,ranking_status,relative_rmse_reduction_pct
+Node-local MLP,city leave-one-out,16,0.0652,0.00748,0,not retained in R2 artifact; add to next rerun,not retained in R2 artifact; add to next rerun,
+GraphSAGE,city leave-one-out,16,0.05778,0.00628,16,not retained in R2 artifact; add to next rerun,not retained in R2 artifact; add to next rerun,
+GraphSAGE advantage,paired city leave-one-out,16,,,16/16,not retained in R2 artifact; add to next rerun,not retained in R2 artifact; add to next rerun,11.39

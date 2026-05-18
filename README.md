@@ -1,16 +1,17 @@
-# Climate-Coupled Seismic Risk to Urban Lifelines (CG-STG)
+# Climate-Modulated Seismic Reliability of Urban Lifeline Networks
 
 This repository contains the public reproducibility package for the manuscript project:
 
-**Climate-Coupled Seismic Risk to Urban Lifelines: A Causal Graph Framework**
+**Climate-modulated seismic reliability of urban lifeline networks: a 100-city spatiotemporal graph screening framework**
 
-CG-STG couples climate-driven groundwater change, soil-state mediation, time-varying liquefaction susceptibility, lifeline-network cascading, GraphSAGE surrogates, PCMCI mediator-chain discovery, and conditional diffusion diagnostics into one reproducible urban-lifeline risk workflow.
+This package contains code and derived non-sensitive outputs for a planning-layer reliability-screening workflow. The workflow combines climate-conditioned groundwater/soil-state perturbations, ground-motion and liquefaction modules, fragility ensembles, lifeline-network cascading, robustness checks, and topology-aware GraphSAGE surrogate evaluation. PCMCI and diffusion outputs are treated as supplementary diagnostics, not as the central reliability claim.
 
 ## Repository Contents
 
 - `ai_autoboost/code/`: Python source for the experiment rounds.
 - `ai_autoboost/outputs/`: derived CSV/JSON tables and generated figures.
 - `ai_autoboost/outputs/final_qc_figures/`: publication/QC figure set used by the Markdown/Word completion package.
+- `ai_autoboost/outputs/round13_ress/`: RESS-oriented static/cascade/climate decomposition, dependency sensitivity, and evidence-status tables.
 - `ai_autoboost/docs/`: reproducibility, limitations, traceability, final gate, and figure/table QC notes.
 - `DATASETS_AND_LINKS.csv`: source registry and redistribution notes.
 - `REPRODUCIBLE_RUNBOOK.md`: install and rerun instructions.
@@ -24,6 +25,8 @@ This public package intentionally excludes raw third-party downloads, cache file
 | 100-city cohort R2 under SSP5-8.5 | 0.475 | `ai_autoboost/outputs/round9/cohort100_regression.csv` |
 | Pearson r under SSP5-8.5 | 0.690 | `ai_autoboost/outputs/round9/cohort100_regression.csv` |
 | Strictly positive-CI cities under SSP5-8.5 | 14/100 | `ai_autoboost/outputs/round9/cohort100_top_positive.csv` |
+| Local climate effect in RESS decomposition | +0.002446 mean damage; BCa CI [0.000996, 0.003849] | `ai_autoboost/outputs/round13_ress/static_cascade_climate_decomposition.csv` |
+| Network cascade effect in RESS decomposition | +0.091074 mean damage; BCa CI [0.089184, 0.092902] | `ai_autoboost/outputs/round13_ress/static_cascade_climate_decomposition.csv` |
 | GraphSAGE LOCO advantage | 11.4% versus MLP; Wilcoxon p = 1.5e-5 | `ai_autoboost/outputs/round2/gnn_vs_mlp_comparison.csv` |
 | Robustness R2 range | 0.47 to 0.75 across perturbations | `ai_autoboost/outputs/round4/robustness_summary.csv` |
 | Forward prediction hash | `43e37430...442100` | `ai_autoboost/outputs/round7/FORWARD_REGISTRATION.md` |
@@ -67,7 +70,7 @@ Use `CITATION.cff` for machine-readable citation metadata. A placeholder BibTeX 
 
 ```bibtex
 @misc{cgstg2026,
-  title = {Climate-Coupled Seismic Risk to Urban Lifelines: A Causal Graph Framework},
+  title = {Climate-modulated seismic reliability of urban lifeline networks: a 100-city spatiotemporal graph screening framework},
   author = {Li, Jian and collaborators},
   year = {2026},
   howpublished = {GitHub repository},

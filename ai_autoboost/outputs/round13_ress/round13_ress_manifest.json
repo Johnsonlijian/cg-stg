@@ -1,0 +1,22 @@
+{
+  "round": "R13_RESS",
+  "outputs": [
+    "Fig_R13_dependency_sensitivity.png",
+    "Fig_R13_static_cascade_climate_decomposition.png",
+    "Fig_R13_surrogate_validation.png",
+    "dependency_edge_inventory.csv",
+    "graph_dependency_class_sensitivity.csv",
+    "module_evidence_status.csv",
+    "positive_ci_city_table_ress.csv",
+    "round13_ress_manifest.json",
+    "static_cascade_climate_decomposition.csv",
+    "static_cascade_climate_states.csv",
+    "surrogate_validation_table.csv",
+    "uncertainty_sources_table.csv"
+  ],
+  "notes": [
+    "Static/cascade/climate decomposition uses paired R2 8-archetype physics outputs.",
+    "Dependency sensitivity uses the actual synthetic dependency graph structure: same-class lifeline backbones plus feeder-to-building edges.",
+    "Positive-CI city asset-class attribution is archetype-level, not city-specific OSM attribution."
+  ]
+}

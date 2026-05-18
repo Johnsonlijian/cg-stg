@@ -1,0 +1,6 @@
+state,definition,n_paired_replicates,mean_final_damage_2100,bca_ci_lo,bca_ci_hi
+D00_static_nocc,"Static-NoCC; no climate, no cascade, HAZUS",1600,0.209405,0.207689,0.211164
+D10_static_climate,"Static-Climate; climate, no cascade, HAZUS",1600,0.211852,0.210001,0.21381
+D01_cascade_nocc,"Cascade-NoCC; no climate, cascade, HAZUS",1600,0.30048,0.298033,0.302922
+D11_cascade_climate,"Cascade-Climate; climate and cascade, HAZUS",1600,0.301381,0.298588,0.304157
+Dfull_ensemble,"Full CG-STG; climate, cascade, fragility ensemble",1600,0.293536,0.290937,0.296436

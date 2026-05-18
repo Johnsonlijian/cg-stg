@@ -1,0 +1,6 @@
+component,formula,n_paired_replicates,mean_delta_damage,bca_ci_lo,bca_ci_hi
+local_climate_effect,D10 - D00,1600,0.002446,0.000996,0.003849
+network_cascade_effect,D01 - D00,1600,0.091074,0.089184,0.092902
+climate_cascade_interaction,D11 - D10 - D01 + D00,1600,-0.001545,-0.004229,0.001032
+fragility_ensemble_adjustment,Dfull - D11,1600,-0.007845,-0.010128,-0.005616
+full_minus_static_nocc,Dfull - D00,1600,0.08413,0.082039,0.086231

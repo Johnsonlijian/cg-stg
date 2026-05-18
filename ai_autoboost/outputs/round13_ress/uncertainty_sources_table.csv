@@ -1,0 +1,8 @@
+source,type,treatment
+GMPE aleatory variability,aleatory,BSSA14 sigma and Monte Carlo sampling
+groundwater scenario,scenario/epistemic,SSP and archetype perturbation
+soil-state proxy,epistemic,soil perturbation sweep
+dependency graph,epistemic/model,random rewire and class-edge ablation
+fragility family,epistemic,weighted HAZUS/GEM-like/Jaiswal-like ensemble
+surrogate model,model error,city leave-one-out RMSE
+historical observations,validation envelope,"sanity-check only, not calibration"

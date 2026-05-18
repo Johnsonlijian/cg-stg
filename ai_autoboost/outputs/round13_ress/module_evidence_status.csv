@@ -1,0 +1,9 @@
+module,method,output,evidence_status,main_limitation
+climate perturbation,SSP/archetype groundwater perturbation,delta groundwater state,scenario screen,"reduced-form perturbation, not hydrology simulation"
+ground motion,BSSA14 PGA,node-level PGA,standard GMPE,near-field and basin resonance limits
+liquefaction,Boulanger-Idriss / Cetin-style probit,liquefaction probability,engineering triggering surrogate,Vs30-to-CPT proxy; no site CPT logs
+fragility,HAZUS/GEM-like/Jaiswal-like ensemble,initial damage and epistemic spread,screening ensemble,not locally calibrated vulnerability
+cascade,multiplicative-saturation graph propagation,system final damage,plausibility model with robustness checks,dependency graph is not utility-truth
+GraphSAGE surrogate,topology-aware learned surrogate,fast post-cascade damage prediction,city-LOCO against simulator,"trained on simulator, not real damage labels"
+PCMCI diagnostic,conditional-dependence mediator graph,mediator-dominance check,supplementary diagnostic,not strict counterfactual causality
+DDPM scenario check,conditional diffusion,distributional fidelity check,supplementary only,not required for main reliability conclusions
