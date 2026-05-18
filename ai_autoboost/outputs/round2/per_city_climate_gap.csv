@@ -1,0 +1,9 @@
+city_id,archetype,label,method,ssp,n_seeds,mean_climate_gap_2100_minus_2020,std_gap,bca_ci_lo,bca_ci_hi
+0,deltaic,Tianjin-like,B4_cgstg_full,SSP5-8.5,10,0.023894,0.011806,0.016911,0.030909
+1,coastal,Bangkok-like,B4_cgstg_full,SSP5-8.5,10,0.007217,0.00588,0.004284,0.011014
+2,lowland,Jakarta-like,B4_cgstg_full,SSP5-8.5,10,0.001572,0.010885,-0.004666,0.008025
+3,mixed,Beijing-like,B4_cgstg_full,SSP5-8.5,10,-0.001016,0.009504,-0.006404,0.004677
+4,inland,Tangshan-like,B4_cgstg_full,SSP5-8.5,10,0.002885,0.011963,-0.004813,0.009496
+5,arid,Hohhot-like,B4_cgstg_full,SSP5-8.5,10,0.001212,0.007686,-0.003457,0.005572
+6,cold,Anchorage-like,B4_cgstg_full,SSP5-8.5,10,-0.000186,0.007837,-0.004327,0.005102
+7,high_alt,Mexico-City-like,B4_cgstg_full,SSP5-8.5,10,-0.005666,0.009842,-0.0124,-0.000633

@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Private or non-redistributable material
+.env
+.env.*
+*.key
+*.pem
+cache/
+data/
+raw_data/
+downloads/
+archives/
+*.zip
+rounds/
+logs/
+active_manuscript/
+submission/
+cover_letters/
+reviewer_responses/
+*.docx
+*.doc
+*.pdf.tmp
+
+# Large/generated local reruns not intended for source control by default
+ai_autoboost/outputs/**/osm_city_graphs/
+ai_autoboost/outputs/**/*.pkl
+ai_autoboost/outputs/**/*.pt
+ai_autoboost/outputs/**/*.pth
+ai_autoboost/outputs/**/*.parquet

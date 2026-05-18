@@ -1,0 +1,2 @@
+n_pairs,gnn_rmse_mean,mlp_rmse_mean,mean_advantage_mlp_minus_gnn,bca_ci_lo,bca_ci_hi,wilcoxon_one_sided_z_proxy,wilcoxon_one_sided_p,sign_test_p,relative_improvement_pct,decision_at_alpha_0.05
+16,0.05778,0.06520,0.00742,0.00541,0.01002,4.17,0.0000153,0.0000153,11.4,GNN BETTER

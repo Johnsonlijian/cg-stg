@@ -1,0 +1,8 @@
+{
+  "started_utc": "2026-05-15T06:32:59.741971Z",
+  "elapsed_seconds": 270.41,
+  "n_cities": 30,
+  "n_successful": 30,
+  "failed": [],
+  "n_records": 17280
+}

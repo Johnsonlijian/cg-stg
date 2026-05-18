@@ -1,0 +1,33 @@
+{
+  "timestamp_utc": "2026-05-15T02:53:27.108917Z",
+  "any_success": true,
+  "results": [
+    {
+      "n_nodes": 570,
+      "n_edges": 1189,
+      "lat": 39.1421,
+      "lon": 117.1767,
+      "dist_m": 1000,
+      "n_buildings": 299,
+      "city": "Tianjin center (deltaic)"
+    },
+    {
+      "n_nodes": 630,
+      "n_edges": 1269,
+      "lat": 13.7563,
+      "lon": 100.5018,
+      "dist_m": 1000,
+      "n_buildings": 5175,
+      "city": "Bangkok center (coastal)"
+    },
+    {
+      "n_nodes": 459,
+      "n_edges": 949,
+      "lat": -6.2088,
+      "lon": 106.8456,
+      "dist_m": 1000,
+      "n_buildings": 13934,
+      "city": "Jakarta center (lowland)"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this reproducibility package, please cite it as below."
+title: "Climate-Coupled Seismic Risk to Urban Lifelines: A Causal Graph Framework"
+authors:
+  - family-names: "Li"
+    given-names: "Jian"
+year: 2026
+repository-code: "https://github.com/Johnsonlijian/cg-stg"
+license: "MIT"
+keywords:
+  - seismic risk
+  - urban lifelines
+  - climate adaptation
+  - liquefaction
+  - causal graphs
+  - reproducibility
+abstract: "Public reproducibility package for the CG-STG manuscript project. The package includes source code, runbooks, derived non-sensitive outputs, generated figures, and source registry metadata."

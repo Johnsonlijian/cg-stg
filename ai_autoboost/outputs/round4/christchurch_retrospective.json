@@ -1,0 +1,113 @@
+{
+  "timestamp_utc": "2026-05-15T05:18:31.531727Z",
+  "city": "Christchurch",
+  "events": {
+    "2010_Darfield": {
+      "event_id": "usp000hcvk",
+      "title": "M 4.1 - 138 km WSW of Adak, Alaska",
+      "time_utc": 1274105059470,
+      "Mw": 4.1,
+      "magType": "mb",
+      "place": "138 km WSW of Adak, Alaska",
+      "hypocentre_lon": -178.342,
+      "hypocentre_lat": 51.233,
+      "depth_km": 25.6,
+      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000hcvk"
+    },
+    "2011_February": {
+      "event_id": "usp000hk46",
+      "title": "M 7.0 - 19 km NE of Methven, New Zealand",
+      "time_utc": 1283531747770,
+      "Mw": 7.0,
+      "magType": "mwc",
+      "place": "19 km NE of Methven, New Zealand",
+      "hypocentre_lon": 171.83,
+      "hypocentre_lat": -43.522,
+      "depth_km": 12.0,
+      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000hk46"
+    }
+  },
+  "distances_km_to_CBD": {
+    "2010_Darfield": 10573.344007045502,
+    "2011_February": 64.55519834949692
+  },
+  "cg_n_nodes": 150,
+  "cg_archetype": "deltaic",
+  "cg_baseline_gw_m": 1.7173946868444727,
+  "predictions": {
+    "2010_Darfield": {
+      "n_mc": 200,
+      "predicted_mean_pga_g": 0.1948841108760863,
+      "predicted_pga_p10_g": 0.17930390289678252,
+      "predicted_pga_p90_g": 0.21016393126397712,
+      "predicted_mean_pliq": 0.4079015024966138,
+      "predicted_mean_damage_rate": 0.6042797051205082,
+      "predicted_damage_p10": 0.553861890168939,
+      "predicted_damage_p90": 0.6514004072908527,
+      "per_class_damage": {
+        "class0": 0.5433731852586383,
+        "class1": 0.7921427821623932,
+        "class2": 0.7173462516589691,
+        "class3": 0.7296957205732517
+      },
+      "event": "2010_Darfield",
+      "Mw": 7.1,
+      "R_km_to_CBD": 38.0,
+      "Mw_source": "published reference (API returned Mw=4.1, mismatched)"
+    },
+    "2011_February": {
+      "n_mc": 200,
+      "predicted_mean_pga_g": 0.34535167755728324,
+      "predicted_pga_p10_g": 0.31781441641283453,
+      "predicted_pga_p90_g": 0.37261663456104976,
+      "predicted_mean_pliq": 0.5541578109710956,
+      "predicted_mean_damage_rate": 0.7735123283390826,
+      "predicted_damage_p10": 0.7438780904181916,
+      "predicted_damage_p90": 0.8015288813806339,
+      "per_class_damage": {
+        "class0": 0.7311252081569787,
+        "class1": 0.8965062372349127,
+        "class2": 0.8489400654265107,
+        "class3": 0.8718005236305509
+      },
+      "event": "2011_February",
+      "Mw": 6.3,
+      "R_km_to_CBD": 10.0,
+      "Mw_source": "published reference (API returned Mw=7.0, mismatched)"
+    }
+  },
+  "comparison_vs_published": {
+    "2010_Darfield": {
+      "event": "2010_Darfield",
+      "Mw": 7.1,
+      "R_km": 38.0,
+      "predicted_PGA_mean_g": 0.1949,
+      "predicted_PGA_p10": 0.1793,
+      "predicted_PGA_p90": 0.2102,
+      "observed_PGA_range_g": "[0.18, 0.35]",
+      "PGA_match": true,
+      "predicted_damage_rate": 0.6043,
+      "predicted_damage_p10": 0.5539,
+      "predicted_damage_p90": 0.6514,
+      "observed_damage_range": "[0.05, 0.15]",
+      "damage_match": false,
+      "reference_citation": "Bradley & Cubrinovski (2011), Cubrinovski et al. (2011 BNZSEE)"
+    },
+    "2011_February": {
+      "event": "2011_February",
+      "Mw": 6.3,
+      "R_km": 10.0,
+      "predicted_PGA_mean_g": 0.3454,
+      "predicted_PGA_p10": 0.3178,
+      "predicted_PGA_p90": 0.3726,
+      "observed_PGA_range_g": "[0.5, 0.8]",
+      "PGA_match": false,
+      "predicted_damage_rate": 0.7735,
+      "predicted_damage_p10": 0.7439,
+      "predicted_damage_p90": 0.8015,
+      "observed_damage_range": "[0.3, 0.6]",
+      "damage_match": false,
+      "reference_citation": "Bradley (2012) Soil Dyn EQ Eng; Cubrinovski et al. (2012); Mason et al. (2017)"
+    }
+  }
+}

@@ -1,0 +1,4 @@
+# Global-map figure caption (for manuscript Fig 8)
+**Figure 8 (R10)**: Climate-isolated lifeline damage gap (Δ damage 2100 − 2020) under SSP5-8.5, n = 100 real OSM-anchored cities across six continents. Marker size is proportional to |gap|; red markers denote strictly-positive 95% bootstrap confidence intervals (n = 14 of 100), blue denote strictly-negative, grey denote zero-crossing. The 14 positive-CI cities are exclusively deltaic / coastal megacities with baseline groundwater depth ≤ 6 m: New Orleans, Christchurch, Guangzhou, Hanoi, Yangon, Singapore, Tianjin, Miami, Ho Chi Minh City, Honolulu, Amsterdam, Dhaka, Shanghai and Rotterdam. The geographic spread (North America, Europe, Asia, Pacific) demonstrates that the framework's selectivity is mechanism-driven rather than region-specific.
+**Source**: `ai_autoboost/outputs/round9/cohort100_summary.csv`
+**Script**: `ai_autoboost/code/round10_extension/r10_global_map.py`

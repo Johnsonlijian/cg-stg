@@ -1,0 +1,28 @@
+{
+  "started_utc": "2026-05-15T04:26:22.438688Z",
+  "elapsed_seconds": 253.68,
+  "n_cities_targeted": 18,
+  "n_cities_successful": 18,
+  "successful_cities": [
+    "Tianjin",
+    "Bangkok",
+    "Jakarta",
+    "NewOrleans",
+    "Manila",
+    "Christchurch",
+    "Wellington",
+    "MexicoCity",
+    "Lima",
+    "Cairo",
+    "Istanbul",
+    "Kathmandu",
+    "Mumbai",
+    "Lagos",
+    "Tokyo",
+    "Osaka",
+    "SanFrancisco",
+    "Beijing"
+  ],
+  "failed_cities": [],
+  "n_records": 10368
+}

@@ -1,0 +1,5 @@
+event_id,city,archetype,Mw,R_km,depth_km,predicted_PGA_p10_g,predicted_PGA_mean_g,predicted_PGA_p90_g,observed_PGA_lo_g,observed_PGA_hi_g,PGA_overlap_fraction,PGA_in_observed_range,predicted_damage_p10,predicted_damage_mean,predicted_damage_p90,observed_damage_lo,observed_damage_hi,damage_overlap_fraction,damage_in_observed_range,citation
+LomaPrieta_1989,SanFrancisco,mixed,6.9,16.0,17.0,0.2799,0.3039,0.3312,0.1,0.25,0.0,False,0.6492,0.6953,0.7347,0.04,0.15,0.0,False,Boore (1989); Borcherdt (1994); Hough (1989) USGS Open-File; EERI 1989
+Michoacan_1985,MexicoCity,high_alt,8.0,350.0,17.0,0.01,0.0109,0.0117,0.1,0.2,0.0,False,0.0,0.0001,0.0002,0.05,0.2,0.0,False,Anderson et al. (1986) Science; Beck & Hall (1986) GRL; Singh et al. (1988) BSSA
+Darfield_2010,Christchurch,deltaic,7.1,38.0,11.0,0.1791,0.1948,0.2119,0.18,0.35,0.973,True,0.5251,0.5786,0.6309,0.05,0.15,0.0,False,Bradley & Cubrinovski (2011); Cubrinovski et al. (2011 BNZSEE)
+Christchurch_2011,Christchurch,deltaic,6.3,10.0,5.0,0.3172,0.3472,0.3797,0.5,0.8,0.0,False,0.7286,0.7646,0.7987,0.3,0.6,0.0,False,Bradley (2012) SDEE; Cubrinovski et al. (2012); Mason et al. (2017)

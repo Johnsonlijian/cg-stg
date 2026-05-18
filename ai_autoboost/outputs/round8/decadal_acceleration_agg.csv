@@ -1,0 +1,5 @@
+ssp,n_cities,mean_acceleration,median_rate_ratio_late_over_early,mean_quadratic_R2,mean_linear_R2
+Control-NoCC,10,-0.000659,-0.187,0.1133,0.0446
+SSP1-2.6,10,0.000953,0.798,0.5085,0.1196
+SSP2-4.5,10,0.0002,-0.078,0.1087,0.0793
+SSP5-8.5,10,-0.000307,0.528,0.489,0.4436

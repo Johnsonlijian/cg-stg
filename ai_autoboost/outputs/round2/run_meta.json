@@ -1,0 +1,86 @@
+{
+  "started_utc": "2026-05-14T15:39:04.815529Z",
+  "finished_utc": "2026-05-14T15:43:49.515860Z",
+  "elapsed_seconds": 284.7,
+  "config": {
+    "seeds": 10,
+    "mc": 20,
+    "n_nodes": 150,
+    "Mw_list": [
+      5.5,
+      6.0,
+      6.5,
+      7.0,
+      7.5
+    ],
+    "R_list_km": [
+      10.0,
+      25.0,
+      50.0,
+      100.0
+    ],
+    "main_Mw": 6.5,
+    "main_R": 25.0,
+    "epochs": [
+      2020,
+      2050,
+      2100
+    ],
+    "ssps": [
+      "SSP2-4.5",
+      "SSP5-8.5",
+      "Control-NoCC"
+    ],
+    "cascading_steps": 8,
+    "cascading_kappa": 0.15,
+    "bootstrap_n": 4999
+  },
+  "n_main": 144000,
+  "n_sweep": 86400,
+  "methods": [
+    "B0_static_hazus",
+    "B1_climate_hazus_no_cascade",
+    "B2_static_cascade",
+    "B3_cgstg_hazus_only",
+    "B4_cgstg_full",
+    "A1_cgstg_gem_only",
+    "A2_cgstg_no_cascade",
+    "A3_cgstg_no_climate",
+    "A4_cgstg_low_kappa",
+    "A5_cgstg_high_kappa"
+  ],
+  "cohort": [
+    [
+      "deltaic",
+      "Tianjin-like"
+    ],
+    [
+      "coastal",
+      "Bangkok-like"
+    ],
+    [
+      "lowland",
+      "Jakarta-like"
+    ],
+    [
+      "mixed",
+      "Beijing-like"
+    ],
+    [
+      "inland",
+      "Tangshan-like"
+    ],
+    [
+      "arid",
+      "Hohhot-like"
+    ],
+    [
+      "cold",
+      "Anchorage-like"
+    ],
+    [
+      "high_alt",
+      "Mexico-City-like"
+    ]
+  ]
+}

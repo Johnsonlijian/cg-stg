@@ -1,0 +1,11 @@
+name,role,source_or_link,license_or_terms,redistribution_in_repo,notes
+OpenStreetMap,road and building topology inputs,https://www.openstreetmap.org/copyright,ODbL / OpenStreetMap contributors,No raw OSM extracts redistributed,OSM-derived synthetic/summary outputs only
+OSMnx,OSM ingestion library,https://github.com/gboeing/osmnx,MIT,Code dependency only,Install optionally for live OSM reruns
+USGS Global Vs30,site-condition proxy,https://earthquake.usgs.gov/data/vs30/,USGS public data terms,No raw raster redistributed,Source link only; derived summaries are included where generated
+CMIP6 scenario labels,climate-scenario anchors,https://esgf-node.llnl.gov/projects/cmip6/,Model/data-specific terms,No raw CMIP6 data redistributed,Framework uses scenario anchors and synthetic/downscaled driver proxies
+GLDAS-2 soil moisture,soil-state anchor reference,https://ldas.gsfc.nasa.gov/gldas,Source-specific terms,No raw GLDAS data redistributed,Used as method anchor; raw files are not included
+Natural Earth land basemap,QC global map basemap,https://www.naturalearthdata.com/,Public domain,No archive redistributed,Figure generator can download the public basemap cache when needed
+HAZUS fragility references,fragility-family baseline,https://www.fema.gov/flood-maps/products-tools/hazus,Public documentation / FEMA terms,No proprietary files redistributed,Implemented as simplified research surrogate
+GEM fragility references,fragility-family baseline,https://www.globalquakemodel.org/,Source-specific terms,No raw model files redistributed,Implemented as GEM-like surrogate
+Published event observations,multi-event retrospective comparison,See manuscript references and runbook,Source-specific terms,No third-party tables redistributed beyond derived comparison rows,Used for sanity-check summaries only
+CG-STG derived outputs,derived tables and generated figures,this repository,Research reproducibility package,Yes,Generated CSV/JSON/PNG/PDF outputs included where non-sensitive

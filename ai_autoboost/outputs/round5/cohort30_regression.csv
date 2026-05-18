@@ -1,0 +1,2 @@
+n_cities,pearson_r,pearson_p,spearman_r,spearman_p,linear_R2,slope,intercept
+30,0.8632,0.0,0.7425,3e-06,0.7452,0.05484,-0.00361

@@ -1,0 +1,5 @@
+ssp,n_cities,pearson_r,pearson_p,linear_R2,slope,intercept,n_strictly_positive_CI,n_strictly_negative_CI,n_zero_crossing
+Control-NoCC,100,-0.219,0.0285917998,0.048,-0.00725,0.00912,3,0,97
+SSP1-2.6,100,-0.0848,0.4016831779,0.0072,-0.00285,0.01724,29,0,71
+SSP2-4.5,100,0.5944,1e-10,0.3534,0.02142,-0.00354,1,0,99
+SSP5-8.5,100,0.6895,0.0,0.4754,0.03349,-0.00028,14,0,86

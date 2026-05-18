@@ -1,0 +1,8 @@
+city,country,archetype,gw_base_m,mean_gap,ci_lo,ci_hi
+Shanghai,China,deltaic,2.5,0.02986,0.01133,0.04883
+Christchurch,NewZealand,deltaic,1.5,0.02704,0.00801,0.04583
+Dhaka,Bangladesh,deltaic,1.5,0.02572,0.00814,0.04313
+NewOrleans,USA,deltaic,2.0,0.02466,0.00728,0.0424
+Guangzhou,China,deltaic,2.5,0.02261,0.00724,0.03878
+Manila,Philippines,coastal,3.5,0.02178,0.0031,0.03969
+Wuhan,China,lowland,3.5,0.0211,0.00127,0.04152

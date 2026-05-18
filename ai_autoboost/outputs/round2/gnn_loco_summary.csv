@@ -1,0 +1,17 @@
+model,held_out_city_id,archetype,label,n_seeds,rmse_mean,rmse_std,bca_ci_lo,bca_ci_hi
+gnn,0,deltaic,Tianjin-like,2,0.06409,0.00336,nan,nan
+mlp,0,deltaic,Tianjin-like,2,0.06701,0.00477,nan,nan
+gnn,1,coastal,Bangkok-like,2,0.05868,0.00029,nan,nan
+mlp,1,coastal,Bangkok-like,2,0.0646,0.00215,nan,nan
+gnn,2,lowland,Jakarta-like,2,0.05687,0.00363,nan,nan
+mlp,2,lowland,Jakarta-like,2,0.07095,0.00061,nan,nan
+gnn,3,mixed,Beijing-like,2,0.05803,0.00232,nan,nan
+mlp,3,mixed,Beijing-like,2,0.06949,0.00827,nan,nan
+gnn,4,inland,Tangshan-like,2,0.05475,0.0019,nan,nan
+mlp,4,inland,Tangshan-like,2,0.06209,0.00423,nan,nan
+gnn,5,arid,Hohhot-like,2,0.06392,0.00511,nan,nan
+mlp,5,arid,Hohhot-like,2,0.06773,0.00257,nan,nan
+gnn,6,cold,Anchorage-like,2,0.06073,0.00408,nan,nan
+mlp,6,cold,Anchorage-like,2,0.07065,0.0005,nan,nan
+gnn,7,high_alt,Mexico-City-like,2,0.04517,0.00158,nan,nan
+mlp,7,high_alt,Mexico-City-like,2,0.04911,0.00015,nan,nan

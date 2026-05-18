@@ -1,0 +1,9 @@
+city_id,archetype,label,n_seeds,mean_gap_cgstg_minus_static,std_gap,bca_ci_lo,bca_ci_hi
+0,deltaic,Tianjin-like,10,0.130224,0.009257,0.124021,0.13503
+1,coastal,Bangkok-like,10,0.088348,0.005127,0.083991,0.090515
+2,lowland,Jakarta-like,10,0.080848,0.013486,0.074466,0.091172
+3,mixed,Beijing-like,10,0.072271,0.006076,0.068555,0.075748
+4,inland,Tangshan-like,10,0.076171,0.006725,0.073006,0.081283
+5,arid,Hohhot-like,10,0.063165,0.00658,0.059369,0.06688
+6,cold,Anchorage-like,10,0.086633,0.006337,0.082101,0.089787
+7,high_alt,Mexico-City-like,10,0.079072,0.010819,0.073938,0.087704

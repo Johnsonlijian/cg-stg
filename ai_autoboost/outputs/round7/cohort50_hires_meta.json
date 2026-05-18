@@ -1,0 +1,29 @@
+{
+  "elapsed_seconds": 152.95,
+  "n_cities": 50,
+  "n_successful": 50,
+  "samples_per_cell": 72,
+  "n_records": 57600,
+  "regression": {
+    "Control-NoCC": {
+      "R2": 0.2341,
+      "p": 0.000372,
+      "positive_CI_count": 0
+    },
+    "SSP1-2.6": {
+      "R2": 0.0688,
+      "p": 0.065766,
+      "positive_CI_count": 0
+    },
+    "SSP2-4.5": {
+      "R2": 0.3765,
+      "p": 2e-06,
+      "positive_CI_count": 1
+    },
+    "SSP5-8.5": {
+      "R2": 0.5614,
+      "p": 0.0,
+      "positive_CI_count": 7
+    }
+  }
+}

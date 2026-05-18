@@ -1,0 +1,22 @@
+# Round 1 minimum smoke-test dependencies (pure numerical, no torch required)
+numpy>=1.26
+scipy>=1.11
+pandas>=2.0
+matplotlib>=3.8
+networkx>=3.2
+pyyaml>=6.0
+tqdm>=4.66
+
+# Round 1+ statistical
+statsmodels>=0.14
+
+# Round 2 onward (heavier; install when GPU pipeline is enabled)
+# torch>=2.2  --index-url https://download.pytorch.org/whl/cu121
+# torch-geometric>=2.5
+# tigramite>=5.2
+
+# Round 3+ geospatial (optional; install when real OSM data is pulled)
+# geopandas>=0.14
+# rasterio>=1.3
+# xarray>=2024.1
+# osmnx>=1.9

@@ -1,0 +1,12 @@
+{
+  "model_params": 11428,
+  "n_train_samples": 4896,
+  "n_diffusion_steps": 200,
+  "n_epochs": 200,
+  "final_loss": 0.2958,
+  "pooled_real_partial_r": 0.02854931284836524,
+  "pooled_gen_partial_r": -0.02966462461754567,
+  "ks_damage_p": 0.2449474861524371,
+  "verdict_C15_grade": "B",
+  "elapsed_seconds": 89.4
+}

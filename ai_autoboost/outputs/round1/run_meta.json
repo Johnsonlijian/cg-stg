@@ -1,0 +1,27 @@
+{
+  "started_utc": "2026-05-14T15:00:25.176614Z",
+  "finished_utc": "2026-05-14T15:00:34.841424Z",
+  "elapsed_seconds": 9.66,
+  "config": {
+    "seeds": 10,
+    "cities": 5,
+    "mc": 50,
+    "nodes_per_city": 200,
+    "Mw": 6.5,
+    "R_km_mean": 25.0,
+    "epochs": [
+      2020,
+      2050,
+      2100
+    ],
+    "ssps": [
+      "SSP2-4.5",
+      "SSP5-8.5",
+      "Control-NoCC"
+    ],
+    "bonferroni_n_tests": 6,
+    "bootstrap_n": 1000
+  },
+  "n_records": 450,
+  "python": "3.11.15 (main, Apr 14 2026, 14:31:26) [MSC v.1944 64 bit (AMD64)]"
+}

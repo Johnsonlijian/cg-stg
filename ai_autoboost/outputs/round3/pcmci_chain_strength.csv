@@ -1,0 +1,9 @@
+archetype,label,n_samples,n_sig_edges,partial_r_dGW_to_damage_given_v2v3,partial_fisher_z,partial_p,lagged_best_lag,lagged_best_r,abs_diff_partial_vs_lagged
+deltaic,Tianjin-like,136,18,0.1442,1.674,0.094099,0,-0.1957,-0.0516
+coastal,Bangkok-like,136,14,0.018,0.208,0.835337,1,-0.18,-0.162
+lowland,Jakarta-like,136,8,0.1439,1.672,0.094584,2,-0.1172,0.0267
+mixed,Beijing-like,136,6,-0.0208,-0.24,0.810509,0,-0.0901,-0.0694
+inland,Tangshan-like,136,9,-0.0527,-0.609,0.542807,3,-0.0924,-0.0397
+arid,Hohhot-like,136,7,-0.0325,-0.375,0.707462,1,-0.0827,-0.0502
+cold,Anchorage-like,136,8,0.0562,0.649,0.516317,0,-0.0623,-0.0061
+high_alt,Mexico-City-like,136,8,0.043,0.496,0.619552,3,0.0199,0.0231

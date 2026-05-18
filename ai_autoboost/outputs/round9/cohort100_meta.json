@@ -1,0 +1,28 @@
+{
+  "elapsed_seconds": 1267.83,
+  "n_cities_targeted": 100,
+  "n_successful": 100,
+  "n_records": 115200,
+  "regression": {
+    "Control-NoCC": {
+      "R2": 0.048,
+      "p": 0.0285917998,
+      "n_positive_CI": 3
+    },
+    "SSP1-2.6": {
+      "R2": 0.0072,
+      "p": 0.4016831779,
+      "n_positive_CI": 29
+    },
+    "SSP2-4.5": {
+      "R2": 0.3534,
+      "p": 1e-10,
+      "n_positive_CI": 1
+    },
+    "SSP5-8.5": {
+      "R2": 0.4754,
+      "p": 0.0,
+      "n_positive_CI": 14
+    }
+  }
+}

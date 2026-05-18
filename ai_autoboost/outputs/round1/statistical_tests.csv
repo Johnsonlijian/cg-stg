@@ -1,0 +1,7 @@
+test,ssp,epoch,n_pairs,z,p_raw,p_bonferroni,significant_at_alpha_0.05_bonferroni,h1_wasserstein_epoch_vs_2020,h1_wasserstein_seed_noise_baseline,h1_ratio_epoch_to_noise
+paired_wilcoxon_signed_rank_cgstg_vs_static,SSP2-4.5,2050,50,2.8525,0.004337,0.026022,True,0.00087,0.00062,1.402
+paired_wilcoxon_signed_rank_cgstg_vs_static,SSP2-4.5,2100,50,4.8315,1e-06,8e-06,True,0.00203,0.00062,3.27
+paired_wilcoxon_signed_rank_cgstg_vs_static,SSP5-8.5,2050,50,5.5168,0.0,0.0,True,0.00246,0.00062,3.957
+paired_wilcoxon_signed_rank_cgstg_vs_static,SSP5-8.5,2100,50,5.8837,0.0,0.0,True,0.00653,0.00062,10.499
+paired_wilcoxon_signed_rank_cgstg_vs_static,Control-NoCC,2050,50,0.0627,0.949969,1.0,False,0.00046,0.00062,0.736
+paired_wilcoxon_signed_rank_cgstg_vs_static,Control-NoCC,2100,50,0.7481,0.454382,1.0,False,0.00052,0.00062,0.842

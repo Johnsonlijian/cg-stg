@@ -1,0 +1,10 @@
+ablated_or_baseline,n,mean_gap_full_minus_method,std_gap,bca_ci_lo,bca_ci_hi,interpretation
+B0_static_hazus,1600,0.084592,0.042316,0.08251,0.086633,B4_cgstg_full ABOVE method
+B1_climate_hazus_no_cascade,1600,0.081684,0.040304,0.079752,0.083637,B4_cgstg_full ABOVE method
+B2_static_cascade,1600,-0.003993,0.044086,-0.006188,-0.001868,B4_cgstg_full BELOW method
+B3_cgstg_hazus_only,1600,-0.007845,0.044855,-0.009908,-0.005594,B4_cgstg_full BELOW method
+A1_cgstg_gem_only,1600,0.057977,0.043332,0.055746,0.060067,B4_cgstg_full ABOVE method
+A2_cgstg_no_cascade,1600,0.089375,0.039059,0.087449,0.091248,B4_cgstg_full ABOVE method
+A3_cgstg_no_climate,1600,0.003681,0.044511,0.001508,0.005826,B4_cgstg_full ABOVE method
+A4_cgstg_low_kappa,1600,0.0451,0.039858,0.043151,0.04713,B4_cgstg_full ABOVE method
+A5_cgstg_high_kappa,1600,-0.095141,0.051621,-0.097597,-0.092576,B4_cgstg_full BELOW method

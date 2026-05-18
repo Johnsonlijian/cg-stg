@@ -1,0 +1,14 @@
+{
+  "started_utc": "2026-05-15T07:28:53.518457Z",
+  "elapsed_seconds": 432.71,
+  "n_cities": 50,
+  "n_successful": 50,
+  "failed": [],
+  "n_records": 38400,
+  "ssp_per_ssp_R2": {
+    "Control-NoCC": 0.1237,
+    "SSP1-2.6": 0.1663,
+    "SSP2-4.5": 0.0779,
+    "SSP5-8.5": 0.5414
+  }
+}
