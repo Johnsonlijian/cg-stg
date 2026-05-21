@@ -4,5 +4,5 @@ groundwater scenario,scenario/epistemic,SSP and archetype perturbation
 soil-state proxy,epistemic,soil perturbation sweep
 dependency graph,epistemic/model,random rewire and class-edge ablation
 fragility family,epistemic,weighted HAZUS/GEM-like/Jaiswal-like ensemble
-surrogate model,model error,city leave-one-out RMSE
+surrogate model,model error,"city leave-one-out RMSE, MAE, bias and rank correlation"
 historical observations,validation envelope,"sanity-check only, not calibration"

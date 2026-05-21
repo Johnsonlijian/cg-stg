@@ -206,7 +206,7 @@ def module_and_uncertainty_tables() -> None:
         {"source": "soil-state proxy", "type": "epistemic", "treatment": "soil perturbation sweep"},
         {"source": "dependency graph", "type": "epistemic/model", "treatment": "random rewire and class-edge ablation"},
         {"source": "fragility family", "type": "epistemic", "treatment": "weighted HAZUS/GEM-like/Jaiswal-like ensemble"},
-        {"source": "surrogate model", "type": "model error", "treatment": "city leave-one-out RMSE"},
+        {"source": "surrogate model", "type": "model error", "treatment": "city leave-one-out RMSE, MAE, bias and rank correlation"},
         {"source": "historical observations", "type": "validation envelope", "treatment": "sanity-check only, not calibration"},
     ])
 
