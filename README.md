@@ -28,6 +28,7 @@ This public package intentionally excludes raw third-party downloads, cache file
 | Local climate effect in RESS decomposition | +0.002446 mean damage; BCa CI [0.000996, 0.003849] | `ai_autoboost/outputs/round13_ress/static_cascade_climate_decomposition.csv` |
 | Network cascade effect in RESS decomposition | +0.091074 mean damage; BCa CI [0.089184, 0.092902] | `ai_autoboost/outputs/round13_ress/static_cascade_climate_decomposition.csv` |
 | GraphSAGE LOCO advantage | 11.4% versus MLP; Wilcoxon p = 1.5e-5 | `ai_autoboost/outputs/round2/gnn_vs_mlp_comparison.csv` |
+| GraphSAGE MAE / rank diagnostics | MAE 0.03935 vs 0.04581; Spearman 0.9085 vs 0.8963 | `ai_autoboost/outputs/round2/gnn_metric_summary.csv` |
 | Robustness R2 range | 0.47 to 0.75 across perturbations | `ai_autoboost/outputs/round4/robustness_summary.csv` |
 | Forward prediction hash | `43e37430...442100` | `ai_autoboost/outputs/round7/FORWARD_REGISTRATION.md` |
 
@@ -57,6 +58,11 @@ The final QC figure set is in `ai_autoboost/outputs/final_qc_figures/`. The chec
 `ai_autoboost/docs/FIGURE_TABLE_QC_2026-05-17.md`
 
 All final QC PNG files report approximately 300 dpi metadata, and no edge-clipping flags were detected in the final check.
+
+Additional RESS-facing figures are:
+
+- `ai_autoboost/outputs/round14_submission_cleanup/Fig_R14_RESS_framework.png`
+- `ai_autoboost/outputs/round2/gnn_parity.png`
 
 ## Data and Code Availability Text
 

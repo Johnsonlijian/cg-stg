@@ -89,7 +89,7 @@ def decomposition_tables() -> None:
         ("D10_static_climate", "Static-Climate; climate, no cascade, HAZUS"),
         ("D01_cascade_nocc", "Cascade-NoCC; no climate, cascade, HAZUS"),
         ("D11_cascade_climate", "Cascade-Climate; climate and cascade, HAZUS"),
-        ("Dfull_ensemble", "Full CG-STG; climate, cascade, fragility ensemble"),
+        ("Dfull_ensemble", "Full framework; climate, cascade, fragility ensemble"),
     ]:
         mean, lo, hi = ci_mean(aligned[col].to_numpy())
         state_rows.append({
@@ -131,35 +131,33 @@ def decomposition_tables() -> None:
 
 
 def surrogate_validation_table() -> None:
-    loco = pd.read_csv(ROUND2 / "gnn_loco_results.csv")
-    pivot = loco.pivot_table(index=["held_out_city_id", "held_out_archetype", "seed"],
-                             columns="model", values="test_rmse").reset_index()
-    pivot["gnn_win"] = pivot["gnn"] < pivot["mlp"]
-    rows = []
-    for model in ["mlp", "gnn"]:
-        vals = pivot[model].to_numpy()
+    metric_path = ROUND2 / "gnn_metric_summary.csv"
+    if metric_path.exists():
+        rows = pd.read_csv(metric_path).fillna("").to_dict(orient="records")
+    else:
+        loco = pd.read_csv(ROUND2 / "gnn_loco_results.csv")
+        pivot = loco.pivot_table(index=["held_out_city_id", "held_out_archetype", "seed"],
+                                 columns="model", values="test_rmse").reset_index()
+        pivot["gnn_win"] = pivot["gnn"] < pivot["mlp"]
+        rows = []
+        for model in ["mlp", "gnn"]:
+            vals = pivot[model].to_numpy()
+            rows.append({
+                "model": "Node-local MLP" if model == "mlp" else "GraphSAGE",
+                "validation_split": "city leave-one-out",
+                "n_pairs": len(vals),
+                "rmse_mean": round(float(vals.mean()), 5),
+                "rmse_std": round(float(vals.std(ddof=1)), 5),
+                "rmse_wins_vs_other": int((pivot["gnn_win"].sum() if model == "gnn" else (~pivot["gnn_win"]).sum())),
+            })
+        rel = (pivot["mlp"].mean() - pivot["gnn"].mean()) / pivot["mlp"].mean() * 100.0
         rows.append({
-            "model": "Node-local MLP" if model == "mlp" else "GraphSAGE",
-            "validation_split": "city leave-one-out",
-            "n_pairs": len(vals),
-            "rmse_mean": round(float(vals.mean()), 5),
-            "rmse_std": round(float(vals.std(ddof=1)), 5),
-            "loco_wins_vs_other": int((pivot["gnn_win"].sum() if model == "gnn" else (~pivot["gnn_win"]).sum())),
-            "mae_status": "not retained in R2 artifact; add to next rerun",
-            "ranking_status": "not retained in R2 artifact; add to next rerun",
+            "model": "GraphSAGE advantage",
+            "validation_split": "paired city leave-one-out",
+            "n_pairs": len(pivot),
+            "rmse_wins_vs_other": f"{int(pivot['gnn_win'].sum())}/{len(pivot)}",
+            "relative_rmse_reduction_pct": round(float(rel), 2),
         })
-    rel = (pivot["mlp"].mean() - pivot["gnn"].mean()) / pivot["mlp"].mean() * 100.0
-    rows.append({
-        "model": "GraphSAGE advantage",
-        "validation_split": "paired city leave-one-out",
-        "n_pairs": len(pivot),
-        "rmse_mean": "",
-        "rmse_std": "",
-        "loco_wins_vs_other": f"{int(pivot['gnn_win'].sum())}/{len(pivot)}",
-        "relative_rmse_reduction_pct": round(float(rel), 2),
-        "mae_status": "not retained in R2 artifact; add to next rerun",
-        "ranking_status": "not retained in R2 artifact; add to next rerun",
-    })
     write_rows(OUT_DIR / "surrogate_validation_table.csv", rows)
 
 

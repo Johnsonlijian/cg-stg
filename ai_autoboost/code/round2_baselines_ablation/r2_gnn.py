@@ -32,6 +32,7 @@ from pathlib import Path
 from typing import Dict, List, Tuple
 
 import numpy as np
+from scipy.stats import kendalltau, spearmanr
 
 CODE_ROOT = Path(__file__).resolve().parent
 PROJECT_ROOT = CODE_ROOT.parents[2]
@@ -181,11 +182,59 @@ def generate_training_set(cohort: List[L.CityGraph], n_per_city: int = 80,
 # Trainer with LOCO splits
 # ---------------------------------------------------------------------------
 
+def evaluate_predictions(model: nn.Module, examples: List[Dict], model_kind: str,
+                         held_out_city_ids: List[int], seed: int) -> Tuple[Dict, List[Dict]]:
+    """Return test metrics and node-level predictions for the held-out examples."""
+    y_all = []
+    pred_all = []
+    rows: List[Dict] = []
+    model.eval()
+    with torch.no_grad():
+        for ex_idx, ex in enumerate(examples):
+            x = torch.from_numpy(ex["x"])
+            A = torch.from_numpy(ex["A"])
+            y = torch.from_numpy(ex["y"])
+            pred = model(x, A).detach().cpu().numpy()
+            target = y.detach().cpu().numpy()
+            y_all.append(target)
+            pred_all.append(pred)
+            for node_id, (obs, est) in enumerate(zip(target, pred)):
+                rows.append({
+                    "model": model_kind,
+                    "held_out_city_ids": ",".join(map(str, held_out_city_ids)),
+                    "seed": seed,
+                    "example_id": ex_idx,
+                    "city_id": ex["city_id"],
+                    "archetype": ex["archetype"],
+                    "node_id": node_id,
+                    "target_damage": round(float(obs), 6),
+                    "predicted_damage": round(float(est), 6),
+                    "abs_error": round(float(abs(est - obs)), 6),
+                })
+
+    y_vec = np.concatenate(y_all)
+    pred_vec = np.concatenate(pred_all)
+    err = pred_vec - y_vec
+    sp = spearmanr(y_vec, pred_vec)
+    kt = kendalltau(y_vec, pred_vec)
+    metrics = {
+        "test_rmse": float(np.sqrt(np.mean(err ** 2))),
+        "test_mae": float(np.mean(np.abs(err))),
+        "test_bias": float(np.mean(err)),
+        "spearman_rho": float(sp.statistic) if not np.isnan(sp.statistic) else float("nan"),
+        "spearman_p": float(sp.pvalue) if not np.isnan(sp.pvalue) else float("nan"),
+        "kendall_tau": float(kt.statistic) if not np.isnan(kt.statistic) else float("nan"),
+        "kendall_p": float(kt.pvalue) if not np.isnan(kt.pvalue) else float("nan"),
+        "n_test_nodes": int(y_vec.size),
+    }
+    return metrics, rows
+
+
 def train_eval(examples: List[Dict], held_out_city_ids: List[int],
                 model_kind: str = "gnn", n_epochs: int = 60, lr: float = 3e-3,
                 hidden: int = 32, n_steps: int = 4,
-                log_csv: List[Dict] = None, seed: int = 0) -> Tuple[float, float]:
-    """Train on non-held-out, evaluate on held-out. Returns (train_rmse, test_rmse)."""
+                log_csv: List[Dict] = None, seed: int = 0) -> Tuple[float, Dict, List[Dict]]:
+    """Train on non-held-out and evaluate on held-out with retained predictions."""
     torch.manual_seed(seed)
     np.random.seed(seed)
 
@@ -240,20 +289,22 @@ def train_eval(examples: List[Dict], held_out_city_ids: List[int],
                 "epoch": epoch, "train_rmse": round(train_rmse, 5),
                 "test_rmse": round(test_rmse, 5),
             })
-    return train_rmse, test_rmse
+    metrics, pred_rows = evaluate_predictions(model, test_ex, model_kind, held_out_city_ids, seed)
+    return train_rmse, metrics, pred_rows
 
 
-def loco_sweep(examples: List[Dict], n_seeds: int = 3) -> Tuple[List[Dict], List[Dict]]:
+def loco_sweep(examples: List[Dict], n_seeds: int = 3) -> Tuple[List[Dict], List[Dict], List[Dict]]:
     """Leave-one-city-out for both GNN and MLP, n_seeds repeats."""
     rows = []
     train_logs = []
+    prediction_rows = []
     city_ids = sorted({e["city_id"] for e in examples})
     for held in city_ids:
         for seed in range(n_seeds):
             for kind in ("gnn", "mlp"):
-                _, test_rmse = train_eval(examples, [held], model_kind=kind,
-                                          n_epochs=40, hidden=32, n_steps=4,
-                                          log_csv=train_logs, seed=seed)
+                _, metrics, pred_rows = train_eval(examples, [held], model_kind=kind,
+                                                   n_epochs=40, hidden=32, n_steps=4,
+                                                   log_csv=train_logs, seed=seed)
                 arch, label = ARCHETYPES[held]
                 rows.append({
                     "model": kind,
@@ -261,10 +312,22 @@ def loco_sweep(examples: List[Dict], n_seeds: int = 3) -> Tuple[List[Dict], List
                     "held_out_archetype": arch,
                     "held_out_label": label,
                     "seed": seed,
-                    "test_rmse": round(test_rmse, 5),
+                    "test_rmse": round(metrics["test_rmse"], 5),
+                    "test_mae": round(metrics["test_mae"], 5),
+                    "test_bias": round(metrics["test_bias"], 5),
+                    "spearman_rho": round(metrics["spearman_rho"], 5),
+                    "spearman_p": round(metrics["spearman_p"], 6),
+                    "kendall_tau": round(metrics["kendall_tau"], 5),
+                    "kendall_p": round(metrics["kendall_p"], 6),
+                    "n_test_nodes": metrics["n_test_nodes"],
                 })
-                log.info(f"  LOCO {kind} held={arch} seed={seed} test_rmse={test_rmse:.5f}")
-    return rows, train_logs
+                prediction_rows.extend(pred_rows)
+                log.info(
+                    f"  LOCO {kind} held={arch} seed={seed} "
+                    f"test_rmse={metrics['test_rmse']:.5f} test_mae={metrics['test_mae']:.5f} "
+                    f"spearman={metrics['spearman_rho']:.3f}"
+                )
+    return rows, train_logs, prediction_rows
 
 
 def write_csv(rows: List[Dict], path: Path) -> None:
@@ -322,6 +385,53 @@ def compare_gnn_vs_mlp(loco_rows: List[Dict], out: Path) -> None:
     }], out)
 
 
+def surrogate_metric_summary(loco_rows: List[Dict], out: Path) -> None:
+    """Summary table with RMSE, MAE and ranking metrics for manuscript use."""
+    import pandas as pd
+    df = pd.DataFrame(loco_rows)
+    pivot = df.pivot_table(index=["held_out_city_id", "held_out_archetype", "seed"],
+                           columns="model", values="test_rmse").reset_index()
+    pivot["gnn_win_rmse"] = pivot["gnn"] < pivot["mlp"]
+    rows = []
+    for model, label in [("mlp", "Node-local MLP"), ("gnn", "GraphSAGE")]:
+        sub = df[df["model"] == model]
+        rows.append({
+            "model": label,
+            "validation_split": "city leave-one-out",
+            "n_pairs": int(sub.shape[0]),
+            "rmse_mean": round(float(sub["test_rmse"].mean()), 5),
+            "rmse_std": round(float(sub["test_rmse"].std(ddof=1)), 5),
+            "mae_mean": round(float(sub["test_mae"].mean()), 5),
+            "mae_std": round(float(sub["test_mae"].std(ddof=1)), 5),
+            "spearman_mean": round(float(sub["spearman_rho"].mean()), 5),
+            "kendall_mean": round(float(sub["kendall_tau"].mean()), 5),
+            "bias_mean": round(float(sub["test_bias"].mean()), 5),
+            "rmse_wins_vs_other": int(pivot["gnn_win_rmse"].sum() if model == "gnn" else (~pivot["gnn_win_rmse"]).sum()),
+            "relative_rmse_reduction_pct": "",
+            "relative_mae_reduction_pct": "",
+        })
+    gnn = df[df["model"] == "gnn"].sort_values(["held_out_city_id", "seed"])
+    mlp = df[df["model"] == "mlp"].sort_values(["held_out_city_id", "seed"])
+    rel_rmse = (mlp["test_rmse"].mean() - gnn["test_rmse"].mean()) / mlp["test_rmse"].mean() * 100.0
+    rel_mae = (mlp["test_mae"].mean() - gnn["test_mae"].mean()) / mlp["test_mae"].mean() * 100.0
+    rows.append({
+        "model": "GraphSAGE advantage",
+        "validation_split": "paired city leave-one-out",
+        "n_pairs": int(gnn.shape[0]),
+        "rmse_mean": "",
+        "rmse_std": "",
+        "mae_mean": "",
+        "mae_std": "",
+        "spearman_mean": "",
+        "kendall_mean": "",
+        "bias_mean": "",
+        "rmse_wins_vs_other": f"{int(pivot['gnn_win_rmse'].sum())}/{len(pivot)}",
+        "relative_rmse_reduction_pct": round(float(rel_rmse), 2),
+        "relative_mae_reduction_pct": round(float(rel_mae), 2),
+    })
+    write_csv(rows, out)
+
+
 def plot_loco(loco_rows: List[Dict], out_png: Path) -> None:
     try:
         import matplotlib
@@ -352,6 +462,38 @@ def plot_loco(loco_rows: List[Dict], out_png: Path) -> None:
     ax.legend()
     fig.tight_layout()
     fig.savefig(out_png, dpi=120, bbox_inches="tight")
+    plt.close(fig)
+
+
+def plot_parity(prediction_rows: List[Dict], out_png: Path) -> None:
+    try:
+        import matplotlib
+        matplotlib.use("Agg")
+        import matplotlib.pyplot as plt
+        import pandas as pd
+    except Exception as e:
+        log.warning(f"parity plot skip: {e}")
+        return
+    df = pd.DataFrame(prediction_rows)
+    if df.empty:
+        return
+    if df.shape[0] > 6000:
+        df = df.sample(6000, random_state=20260521)
+    fig, axes = plt.subplots(1, 2, figsize=(8.4, 3.8), sharex=True, sharey=True)
+    for ax, kind, title in zip(axes, ["mlp", "gnn"], ["Node-local MLP", "GraphSAGE"]):
+        sub = df[df["model"] == kind]
+        ax.scatter(sub["target_damage"], sub["predicted_damage"], s=5, alpha=0.25)
+        lo = float(min(sub["target_damage"].min(), sub["predicted_damage"].min()))
+        hi = float(max(sub["target_damage"].max(), sub["predicted_damage"].max()))
+        ax.plot([lo, hi], [lo, hi], color="black", linewidth=0.8)
+        ax.set_title(title)
+        ax.grid(alpha=0.25)
+    axes[0].set_ylabel("Predicted final damage")
+    for ax in axes:
+        ax.set_xlabel("Simulator final damage")
+    fig.suptitle("LOCO surrogate parity against cascade-simulator labels", y=1.02)
+    fig.tight_layout()
+    fig.savefig(out_png, dpi=180, bbox_inches="tight")
     plt.close(fig)
 
 
@@ -387,13 +529,16 @@ def main() -> int:
     log.info(f"  → {len(examples)} examples")
 
     log.info("Running LOCO sweep (GNN + MLP) ...")
-    loco_rows, train_logs = loco_sweep(examples, n_seeds=args.n_seeds)
+    loco_rows, train_logs, prediction_rows = loco_sweep(examples, n_seeds=args.n_seeds)
 
     write_csv(loco_rows, OUT_DIR / "gnn_loco_results.csv")
     write_csv(train_logs, OUT_DIR / "gnn_train_log.csv")
+    write_csv(prediction_rows, OUT_DIR / "gnn_loco_predictions.csv")
     aggregate_loco(loco_rows, OUT_DIR / "gnn_loco_summary.csv")
     compare_gnn_vs_mlp(loco_rows, OUT_DIR / "gnn_vs_mlp_comparison.csv")
+    surrogate_metric_summary(loco_rows, OUT_DIR / "gnn_metric_summary.csv")
     plot_loco(loco_rows, OUT_DIR / "gnn_loco.png")
+    plot_parity(prediction_rows, OUT_DIR / "gnn_parity.png")
 
     elapsed = (datetime.utcnow() - t0).total_seconds()
     meta = {

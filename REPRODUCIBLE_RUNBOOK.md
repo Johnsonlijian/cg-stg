@@ -61,6 +61,7 @@ python ai_autoboost/code/round9_extension/r9_cohort100.py
 python ai_autoboost/code/round10_extension/r10_global_map.py
 python ai_autoboost/code/round12_qc/build_publication_figures.py
 python ai_autoboost/code/round13_ress/ress_incremental_analysis.py
+python ai_autoboost/code/round14_submission_cleanup/build_ress_framework_figure.py
 ```
 
 ## 4. Key Checks
@@ -75,6 +76,9 @@ After rerun, compare the derived outputs against:
 - `ai_autoboost/outputs/round13_ress/static_cascade_climate_decomposition.csv`
 - `ai_autoboost/outputs/round13_ress/graph_dependency_class_sensitivity.csv`
 - `ai_autoboost/outputs/round13_ress/surrogate_validation_table.csv`
+- `ai_autoboost/outputs/round2/gnn_metric_summary.csv`
+- `ai_autoboost/outputs/round2/gnn_parity.png`
+- `ai_autoboost/outputs/round14_submission_cleanup/Fig_R14_RESS_framework.png`
 
 The forward-registration file is documented in:
 
